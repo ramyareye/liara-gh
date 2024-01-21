@@ -25,4 +25,4 @@ jobs:
       #     liara deploy --api-token="$LIARA_TOKEN" --detach
       - name: echo
         run: |
-          echo {{ github }}
+          echo ${{ github }}
