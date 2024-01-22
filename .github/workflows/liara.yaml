@@ -24,8 +24,3 @@ jobs:
         run: |
           npm i -g @liara/cli@4
           liara deploy --api-token="$LIARA_TOKEN" --detach
-      - name: echo
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
