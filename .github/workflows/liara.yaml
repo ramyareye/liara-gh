@@ -17,12 +17,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
-      # - name: update-liara
-      #   env:
-      #     LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
-      #   run: |
-      #     npm i -g @liara/cli@4
-      #     liara deploy --api-token="$LIARA_TOKEN" --detach
+      - name: update-liara
+        env:
+          LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
+        if: contains(github.event.commits[0].message, '#build')
+        run: |
+          npm i -g @liara/cli@4
+          liara deploy --api-token="$LIARA_TOKEN" --detach --no-app-logs
       - name: echo
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
