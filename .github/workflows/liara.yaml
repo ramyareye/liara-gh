@@ -23,5 +23,7 @@ jobs:
         # if: contains(github.event.commits[0].message, '#build')
         if: false
         run: |
-          npm i -g @liara/cli@4
-          liara deploy --api-token="$LIARA_TOKEN" --detach
+          if [[ contains(github.event.commits[0].message, "#build") ]]; then
+            npm i -g @liara/cli@4
+            liara deploy --api-token="$LIARA_TOKEN" --detach
+          fi
