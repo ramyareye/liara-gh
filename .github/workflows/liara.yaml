@@ -25,4 +25,6 @@ jobs:
           if [[ $(git log -1 --pretty=%B) == *"#build"* ]]; then
             npm i -g @liara/cli@4
             liara deploy --api-token="$LIARA_TOKEN" --detach
+          else
+            echo 'skipped!'
           fi
