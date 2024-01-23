@@ -21,7 +21,6 @@ jobs:
         env:
           LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
         # if: contains(github.event.commits[0].message, '#build')
-        if: false
         run: |
           if [[ contains(github.event.commits[0].message, "#build") ]]; then
             npm i -g @liara/cli@4
