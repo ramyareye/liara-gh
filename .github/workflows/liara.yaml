@@ -22,7 +22,7 @@ jobs:
           LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
         # if: contains(github.event.commits[0].message, '#build')
         run: |
-          if [[ contains(github.event.commits[0].message, "#build") ]]; then
+          if [[ $(git log -1 --pretty=%B) == *"#build"* ]]; then
             npm i -g @liara/cli@4
             liara deploy --api-token="$LIARA_TOKEN" --detach
           fi
